@@ -1,4 +1,5 @@
 # DecodeLabs - ZentrixAI Landing Page
+# Deployed Link - "https://decode-labs-internship.vercel.app/"
 
 This project is a high-fidelity, responsive landing page for ZentrixAI, developed during my internship at DecodeLabs. The project focuses on modern UI/UX principles, clean CSS architecture, and high-performance front-end execution.
 
