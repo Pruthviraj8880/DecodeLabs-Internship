@@ -5,12 +5,10 @@
     --text-main: #ffffff;
     --text-dim: #b0b0b0;
     --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --primary-gradient: linear-gradient(90deg, #a855f7, #5d5dff); /* Purple to Blue */
     --glass-border: rgba(255, 255, 255, 0.2);
+    --primary-gradient: linear-gradient(90deg, #a855f7, #5d5dff);
     --hover-glow: 0 0 20px rgba(93, 93, 255, 0.4);
-} 
-
+}
 
 * {
     margin: 0;
@@ -28,7 +26,7 @@ body {
     line-height: 1.6;
 }
 
-/* STICKY HEADER */
+/* HEADER */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -40,7 +38,6 @@ body {
     z-index: 1000;
     background: rgba(5, 1, 18, 0.8);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
 }
 
@@ -54,24 +51,21 @@ body {
 
 .nav-links a:hover { color: white; }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
     padding: 120px 8% 60px;
     display: flex;
     justify-content: flex-start;
 }
 
-.hero h1 {
-    font-size: 4rem;
-    line-height: 1.1;
-    margin: 20px 0;
-}
-
+.hero h1 { font-size: 4rem; line-height: 1.1; margin: 20px 0; }
 .hero h1 span {
     background: linear-gradient(90deg, #5de0ff, #a855f7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* BUTTONS */
 button {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
@@ -83,13 +77,12 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    border: none;
 }
 
-/* THE GRADIENT BUTTON (Get Started) */
 .btn-primary {
     background: var(--primary-gradient);
     color: white;
-    border: none;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -99,40 +92,32 @@ button {
     filter: brightness(1.1);
 }
 
-/* THE GLASS BUTTON (Watch Demo) */
 .btn-secondary {
     background: rgba(255, 255, 255, 0.05); 
     color: white;
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(5px);
 }
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-}
+.hero-btns { display: flex; gap: 15px; margin-top: 30px; }
 
-.hero-btns {
-    display: flex;
-    gap: 15px; 
-    margin-top: 30px;
-}
-
-
-/* FEATURES GRID */
+/* FEATURES SECTION (The Row Fix) */
 .features {
     padding: 80px 8%;
     text-align: center;
 }
 
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px; 
+.feature-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+    list-style: none;
     margin-top: 50px;
 }
 
 .card {
+    flex: 1;
+    max-width: 400px;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     padding: 40px;
@@ -150,7 +135,7 @@ button {
     border-top: 1px solid var(--glass-border);
 }
 
-.social-icons { display: flex; gap: 12px; margin-top: 15px; }
+.social-icons { display: flex; gap: 12px; margin-top: 15px; list-style: none; }
 
 .icon-circle {
     width: 35px; height: 35px;
@@ -158,114 +143,17 @@ button {
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: #b0b0b0; text-decoration: none;
-    transition: 0.3s;
 }
 
-/* RESPONSIVE MEDIA QUERIES */
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .feature-list { flex-direction: column; align-items: center; }
+    .card { width: 100%; max-width: 100%; }
+}
+
 @media (max-width: 768px) {
     .main-header { flex-direction: column; height: auto; padding: 20px; }
-    .nav-links { margin: 15px 0; display: flex; flex-wrap: wrap; justify-content: center; }
+    .hero { padding: 60px 8%; text-align: center; justify-content: center; }
     .hero h1 { font-size: 2.5rem; }
-    .main-footer { flex-direction: column; gap: 40px; text-align: center; }
-    .social-icons { justify-content: center; }
-}
-
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    /* Header / Nav */
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 5%;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .nav-links a {
-        margin: 5px;
-        font-size: 13px;
-    }
-
-    .nav-btn {
-        display: none; /* Hide the extra button on mobile header to save space */
-    }
-
-    /* Hero Section */
-    .hero {
-        padding: 60px 5%;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem; /* Shrink text for mobile */
-    }
-
-    .hero p {
-        margin: 20px auto;
-        font-size: 0.95rem;
-    }
-
-    .hero-btns {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-    }
-
-    .btn-secondary {
-        margin-left: 0;
-        width: 100%;
-        max-width: 250px;
-    }
-
-    .btn-primary {
-        width: 100%;
-        max-width: 250px;
-    }
-
-    /* Features Section */
-    .features h2 {
-        font-size: 2rem;
-    }
-    .features {
-        padding: 80px 8%;
-        text-align: center;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-}
-
-    .card {
-        padding: 30px;
-    }
-
-    /* Footer */
-    footer {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-        gap: 40px;
-        padding: 40px 5%;
-    }
-
-    .footer-right, .footer-center, .footer-left {
-        width: 100%;
-    }
-}
-/* Extra Small Devices (Phones) */
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .nav-links {
-        display: none; 
-    }
+    .main-footer { flex-direction: column; gap: 40px; text-align: center; align-items: center; }
 }
