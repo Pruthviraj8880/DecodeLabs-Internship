@@ -234,11 +234,13 @@ button {
     .features h2 {
         font-size: 2rem;
     }
-
-    .feature-grid {
-        grid-template-columns: 1fr; /* Stack cards vertically */
-        padding: 0 10px;
-    }
+    .features {
+        padding: 80px 8%;
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+}
 
     .card {
         padding: 30px;
